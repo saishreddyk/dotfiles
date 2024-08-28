@@ -28,11 +28,21 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start" -- allow backspace on index, end of line or insert mode start position
 
 -- clipboard
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
-
+vim.g.clipboard = {
+      name = 'OSC 52',
+      copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+      },
+      paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+      },
+    }
 
